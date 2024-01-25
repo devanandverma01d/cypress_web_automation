@@ -1,0 +1,78 @@
+Setup of Cypress
+------------------------------
+1. Install package.json file, using following command-
+    npm init -y
+2. Install cypress using following command-
+    npm install --save-dev cypress
+3. Run following command to initialize the Cypress.
+    npx cypress open
+
+
+ 
+Add Cypress HTML Reporter
+------------------------------
+Step-1. Install cypress-mochawesome-reporter, using following command.
+    npm i --save-dev cypress-mochawesome-reporter
+
+Step-2. Edit config file (cypress.config.js by default) by adding-
+
+        const { defineConfig } = require('cypress');
+        module.exports = defineConfig({
+            reporter: 'cypress-mochawesome-reporter',
+            e2e: {
+                setupNodeEvents(on, config) {
+                require('cypress-mochawesome-reporter/plugin')(on);
+                },
+            },
+        });
+
+Step-3. Add following import to cypress/support/e2e.js
+    import 'cypress-mochawesome-reporter/register';
+
+Step-4. run cypress using following command
+    npx cypress run
+
+
+
+Writing and Executing Tests
+------------------------------
+To write a test we need to follow the following syntax-
+
+describe('suite name',()=>{
+
+    it('TestName->test1',()=>{  
+        expect(true).to.equal(true)
+    })
+
+    it('test2',()=>{
+        expect(true).to.equal(true)
+    })
+
+    it('test3',()=>{
+        expect(true).to.equal(true)
+    })
+
+    it('test4',()=>{
+        expect(true).to.equal(true)
+    })
+})
+
+
+Locators
+--------------
+1. CSS Selector
+2. XPath
+
+cy.get()  -- using Locators we can identify the elements, and to identify the elements Cypress provides a function-i.e.
+             cy.get(name of locators)
+
+1. CSS Selectors
+-----------------
+tag id---> tag#id
+tag class---> tag.class
+tag attribute--->tag[attribute='value']
+tag class attribute--->tag.class[attribute='value']
+
+Note:- tag is optional
+Note:- To use locators first we need to add following line either at the top of every testcase or put it inside 
+        cypress/support/commands.js/ 
