@@ -76,3 +76,19 @@ tag class attribute--->tag.class[attribute='value']
 Note:- tag is optional
 Note:- To use locators first we need to add following line either at the top of every testcase or put it inside 
         cypress/support/commands.js/ 
+        /// <reference types="Cypress" />
+2. XPath
+-----------
+To use Xpath features we have to install cypress XPath using following command-
+    npm install -D cypress-xpath and also
+add- /// <reference types="cypress-xpath" /> inside cypress/support/commands.js/ 
+and one more entry- require('cypress-xpath') inside cypress/support/e2e.js/ 
+
+
+Cypress Assertion
+------------------
+Mainly Cypress Assertion are two types-
+1. Implicit Assertion
+    - it includes two keyword- should & and
+2. Explicit Assertion 
+    - it includes two keyword- expect & assert
